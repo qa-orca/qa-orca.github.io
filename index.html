@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QA Orca</title>
+  <script src="https://unpkg.com/vue@3"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4faff;
+      color: #333;
+    }
+    header {
+      background: #007acc;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .section {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    .socials a {
+      margin: 0 0.5rem;
+      text-decoration: none;
+      color: #007acc;
+    }
+    .testimonial {
+      background: #ffffff;
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>QA Orca</h1>
+      <p>Ship faster. Test smarter. Powered by QA Orca.</p>
+    </header>
+
+    <section class="section">
+      <h2>About Us</h2>
+      <p>
+        QA Orca is a boutique software testing studio helping startups and lean teams deliver high-quality, bug-free software.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Follow Us</h2>
+      <div class="socials">
+        <a href="https://linkedin.com/company/qa-orca" target="_blank">LinkedIn</a>
+        <a href="https://github.com/qa-orca" target="_blank">GitHub</a>
+        <a href="mailto:hello@qaorca.com">Email Us</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Testimonials</h2>
+      <div v-for="testimonial in testimonials" :key="testimonial.name" class="testimonial">
+        <p><strong>{{ testimonial.name }}</strong></p>
+        <p>"{{ testimonial.message }}"</p>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2025 QA Orca. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+    createApp({
+      data() {
+        return {
+          testimonials: [
+            { name: 'Samantha T.', message: 'QA Orca helped us catch 3 critical bugs before launch.' },
+            { name: 'Devon R.', message: 'Professional, fast, and incredibly thorough QA support.' },
+            { name: 'Lina C.', message: 'Loved working with QA Orca! Would recommend to any startup.' },
+          ]
+        };
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
