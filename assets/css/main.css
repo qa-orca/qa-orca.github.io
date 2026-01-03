@@ -2579,3 +2579,37 @@ section,
     font-size: 15px;
   }
 }
+
+/* Form Validation Styles */
+.form-floating-group .error-message {
+  display: none;
+  font-size: 12px;
+  color: #dc3545;
+  margin-top: 6px;
+  padding-left: 4px;
+}
+
+.form-floating-group.has-error .error-message {
+  display: block;
+}
+
+.form-floating-group .form-input.invalid {
+  border-color: #dc3545;
+}
+
+.form-floating-group .form-input.invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.15);
+}
+
+.form-floating-group.has-error label {
+  color: #dc3545;
+}
+
+.form-floating-group .form-input.valid {
+  border-color: var(--accent-color);
+}
+
+.form-floating-group .form-input.valid:focus {
+  border-color: var(--accent-color);
+}

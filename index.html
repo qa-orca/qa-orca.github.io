@@ -828,7 +828,7 @@
       
       <!-- Contact Form -->
       <div class="col-lg-8">
-        <form action="https://formsubmit.co/qa.orca.contact@gmail.com" method="POST" class="modern-contact-form" data-aos="fade-up" data-aos-delay="200">
+        <form action="https://formsubmit.co/qa.orca.contact@gmail.com" method="POST" class="modern-contact-form" id="contactForm" data-aos="fade-up" data-aos-delay="200" novalidate>
           <div class="form-header">
             <h3>Send a Message</h3>
             <p>Fill out the form below and we'll get back to you as soon as possible.</p>
@@ -837,8 +837,9 @@
           <div class="row gy-4">
             <div class="col-md-6">
               <div class="form-floating-group">
-                <input type="text" name="name" id="name" class="form-input" placeholder=" " required>
+                <input type="text" name="name" id="name" class="form-input" placeholder=" " required minlength="2">
                 <label for="name">Your Name</label>
+                <span class="error-message">Please enter your name (at least 2 characters)</span>
               </div>
             </div>
 
@@ -846,20 +847,23 @@
               <div class="form-floating-group">
                 <input type="email" name="email" id="email" class="form-input" placeholder=" " required>
                 <label for="email">Your Email</label>
+                <span class="error-message">Please enter a valid email address</span>
               </div>
             </div>
 
             <div class="col-md-12">
               <div class="form-floating-group">
-                <input type="text" name="subject" id="subject" class="form-input" placeholder=" " required>
+                <input type="text" name="subject" id="subject" class="form-input" placeholder=" " required minlength="3">
                 <label for="subject">Subject</label>
+                <span class="error-message">Please enter a subject (at least 3 characters)</span>
               </div>
             </div>
 
             <div class="col-md-12">
               <div class="form-floating-group">
-                <textarea name="message" id="message" class="form-input form-textarea" placeholder=" " required></textarea>
+                <textarea name="message" id="message" class="form-input form-textarea" placeholder=" " required minlength="10"></textarea>
                 <label for="message">Message</label>
+                <span class="error-message">Please enter your message (at least 10 characters)</span>
               </div>
             </div>
 
@@ -877,6 +881,81 @@
           <input type="hidden" name="_next" value="https://qaorca.com/thank-you.html">
         </form>
       </div><!-- End Contact Form -->
+
+      <script>
+        (function() {
+          const form = document.getElementById('contactForm');
+          const inputs = form.querySelectorAll('.form-input');
+
+          // Validate on blur
+          inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+              validateField(this);
+            });
+
+            // Clear error on input
+            input.addEventListener('input', function() {
+              if (this.classList.contains('invalid')) {
+                validateField(this);
+              }
+            });
+          });
+
+          // Validate on submit
+          form.addEventListener('submit', function(e) {
+            let isValid = true;
+            inputs.forEach(input => {
+              if (!validateField(input)) {
+                isValid = false;
+              }
+            });
+
+            if (!isValid) {
+              e.preventDefault();
+              // Focus first invalid field
+              const firstInvalid = form.querySelector('.form-input.invalid');
+              if (firstInvalid) firstInvalid.focus();
+            }
+          });
+
+          function validateField(field) {
+            const parent = field.closest('.form-floating-group');
+            let isValid = true;
+
+            // Check required
+            if (field.hasAttribute('required') && !field.value.trim()) {
+              isValid = false;
+            }
+
+            // Check minlength
+            const minLength = field.getAttribute('minlength');
+            if (minLength && field.value.trim().length < parseInt(minLength)) {
+              isValid = false;
+            }
+
+            // Check email format
+            if (field.type === 'email' && field.value.trim()) {
+              const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              if (!emailRegex.test(field.value.trim())) {
+                isValid = false;
+              }
+            }
+
+            // Update UI
+            if (isValid) {
+              field.classList.remove('invalid');
+              field.classList.add('valid');
+              parent.classList.remove('has-error');
+            } else {
+              field.classList.remove('valid');
+              field.classList.add('invalid');
+              parent.classList.add('has-error');
+            }
+
+            return isValid;
+          }
+        })();
+      </script>
 
 
 
