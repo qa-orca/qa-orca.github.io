@@ -2526,14 +2526,13 @@ section,
 }
 
 .modern-contact-form .btn-submit {
-  width: 100%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 16px 32px;
+  gap: 8px;
+  padding: 14px 36px;
   font-family: var(--default-font);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--contrast-color);
   background: var(--accent-color);
