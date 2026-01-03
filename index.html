@@ -828,39 +828,53 @@
       
       <!-- Contact Form -->
       <div class="col-lg-8">
-        <form action="https://formsubmit.co/qa.orca.contact@gmail.com" method="POST" class="fs-6" data-aos="fade-up" data-aos-delay="200">
+        <form action="https://formsubmit.co/qa.orca.contact@gmail.com" method="POST" class="modern-contact-form" data-aos="fade-up" data-aos-delay="200">
+          <div class="form-header">
+            <h3>Send a Message</h3>
+            <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+          </div>
+
           <div class="row gy-4">
-
             <div class="col-md-6">
-              <label for="name" class="form-label visually-hidden">Name</label>
-              <input type="text" name="name" id="name" class="form-control form-control-lg" placeholder="Your Name" required>
+              <div class="form-floating-group">
+                <input type="text" name="name" id="name" class="form-input" placeholder=" " required>
+                <label for="name">Your Name</label>
+              </div>
             </div>
 
             <div class="col-md-6">
-              <label for="email" class="form-label visually-hidden">Email</label>
-              <input type="email" name="email" id="email" class="form-control form-control-lg" placeholder="Your Email" required>
+              <div class="form-floating-group">
+                <input type="email" name="email" id="email" class="form-input" placeholder=" " required>
+                <label for="email">Your Email</label>
+              </div>
             </div>
 
             <div class="col-md-12">
-              <label for="subject" class="form-label visually-hidden">Subject</label>
-              <input type="text" name="subject" id="subject" class="form-control form-control-lg" placeholder="Subject" required>
+              <div class="form-floating-group">
+                <input type="text" name="subject" id="subject" class="form-input" placeholder=" " required>
+                <label for="subject">Subject</label>
+              </div>
             </div>
 
             <div class="col-md-12">
-              <label for="message" class="form-label visually-hidden">Message</label>
-              <textarea name="message" id="message" rows="6" class="form-control form-control-lg" placeholder="Message" required></textarea>
+              <div class="form-floating-group">
+                <textarea name="message" id="message" class="form-input form-textarea" placeholder=" " required></textarea>
+                <label for="message">Message</label>
+              </div>
             </div>
 
-            <div class="col-md-12 text-center">
-              <button type="submit" class="btn btn-success rounded-pill px-4 py-2">Send Message</button>
+            <div class="col-md-12">
+              <button type="submit" class="btn-submit">
+                <span>Send Message</span>
+                <i class="bi bi-send"></i>
+              </button>
             </div>
-
           </div>
 
           <!-- Hidden Inputs -->
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="https://qa-orca.github.io/thank-you.html">
+          <input type="hidden" name="_next" value="https://qaorca.com/thank-you.html">
         </form>
       </div><!-- End Contact Form -->
 

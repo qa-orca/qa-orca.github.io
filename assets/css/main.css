@@ -2433,3 +2433,149 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
 }
+
+/*--------------------------------------------------------------
+# Modern Contact Form
+--------------------------------------------------------------*/
+.modern-contact-form {
+  background: var(--surface-color);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.modern-contact-form .form-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.modern-contact-form .form-header h3 {
+  font-family: var(--heading-font);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 10px;
+}
+
+.modern-contact-form .form-header p {
+  font-family: var(--default-font);
+  font-size: 15px;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin: 0;
+}
+
+.form-floating-group {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.form-floating-group .form-input {
+  width: 100%;
+  padding: 20px 16px 8px;
+  font-family: var(--default-font);
+  font-size: 15px;
+  color: var(--default-color);
+  background: var(--background-color);
+  border: 2px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-floating-group .form-input:hover {
+  border-color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+.form-floating-group .form-input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-color), transparent 85%);
+}
+
+.form-floating-group label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--default-font);
+  font-size: 15px;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  background: transparent;
+  padding: 0 4px;
+}
+
+.form-floating-group .form-textarea + label {
+  top: 24px;
+}
+
+.form-floating-group .form-input:focus + label,
+.form-floating-group .form-input:not(:placeholder-shown) + label {
+  top: 8px;
+  transform: translateY(0);
+  font-size: 12px;
+  color: var(--accent-color);
+  font-weight: 500;
+}
+
+.form-floating-group .form-textarea {
+  min-height: 150px;
+  resize: vertical;
+  padding-top: 26px;
+}
+
+.modern-contact-form .btn-submit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 32px;
+  font-family: var(--default-font);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+.modern-contact-form .btn-submit:hover {
+  background: color-mix(in srgb, var(--accent-color), black 15%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--accent-color), transparent 60%);
+}
+
+.modern-contact-form .btn-submit:active {
+  transform: translateY(-1px);
+}
+
+.modern-contact-form .btn-submit i {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.modern-contact-form .btn-submit:hover i {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .modern-contact-form {
+    padding: 30px 20px;
+  }
+
+  .modern-contact-form .form-header h3 {
+    font-size: 22px;
+  }
+
+  .modern-contact-form .btn-submit {
+    padding: 14px 28px;
+    font-size: 15px;
+  }
+}
