@@ -159,6 +159,68 @@
   });
 
   /**
+   * Contact form validation
+   */
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    const inputs = contactForm.querySelectorAll('.form-input');
+
+    function validateField(field) {
+      const parent = field.closest('.form-floating-group');
+      let isValid = true;
+
+      if (field.hasAttribute('required') && !field.value.trim()) {
+        isValid = false;
+      }
+
+      const minLength = field.getAttribute('minlength');
+      if (minLength && field.value.trim().length < parseInt(minLength, 10)) {
+        isValid = false;
+      }
+
+      if (field.type === 'email' && field.value.trim()) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(field.value.trim())) {
+          isValid = false;
+        }
+      }
+
+      field.classList.toggle('valid', isValid);
+      field.classList.toggle('invalid', !isValid);
+      parent.classList.toggle('has-error', !isValid);
+
+      return isValid;
+    }
+
+    inputs.forEach(input => {
+      input.addEventListener('blur', function() {
+        validateField(this);
+      });
+
+      input.addEventListener('input', function() {
+        if (this.classList.contains('invalid')) {
+          validateField(this);
+        }
+      });
+    });
+
+    contactForm.addEventListener('submit', function(e) {
+      let isValid = true;
+      inputs.forEach(input => {
+        if (!validateField(input)) {
+          isValid = false;
+        }
+      });
+
+      if (!isValid) {
+        e.preventDefault();
+        const firstInvalid = contactForm.querySelector('.form-input.invalid');
+        if (firstInvalid) firstInvalid.focus();
+      }
+    });
+  }
+
+  /**
    * Init swiper sliders
    */
   function initSwiper() {

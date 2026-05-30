@@ -185,58 +185,6 @@ h6 {
   }
 }
 
-/* PHP Email Form Messages
-------------------------------*/
-.php-email-form .error-message {
-  display: none;
-  background: #df1529;
-  color: #ffffff;
-  text-align: left;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-.php-email-form .sent-message {
-  display: none;
-  color: #ffffff;
-  background: #059652;
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-.php-email-form .loading {
-  display: none;
-  background: var(--surface-color);
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-}
-
-.php-email-form .loading:before {
-  content: "";
-  display: inline-block;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid var(--accent-color);
-  border-top-color: var(--surface-color);
-  animation: php-email-form-loading 1s linear infinite;
-}
-
-@keyframes php-email-form-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 /*--------------------------------------------------------------
 # Global Header
 --------------------------------------------------------------*/
@@ -254,6 +202,7 @@ h6 {
 
 .header .logo {
   line-height: 1;
+  min-width: 0;
 }
 
 .header .logo img {
@@ -266,6 +215,7 @@ h6 {
   margin: 0;
   font-weight: 700;
   color: var(--heading-color);
+  white-space: nowrap;
 }
 
 .header .cta-btn,
@@ -302,6 +252,25 @@ h6 {
 
   .header .navmenu {
     order: 3;
+  }
+}
+
+@media (max-width: 575px) {
+  .header {
+    padding: 8px 0;
+  }
+
+  .header .logo img {
+    max-height: 30px;
+    margin-right: 6px;
+  }
+
+  .header .logo h1 {
+    font-size: 20px;
+  }
+
+  .header .cta-btn {
+    display: none;
   }
 }
 
@@ -466,7 +435,8 @@ h6 {
     display: none;
     list-style: none;
     position: absolute;
-    inset: 60px 20px 20px 20px;
+    inset: 60px 20px auto 20px;
+    max-height: calc(100vh - 90px);
     padding: 10px 0;
     margin: 0;
     border-radius: 6px;
@@ -572,6 +542,24 @@ h6 {
   }
 }
 
+@media (max-width: 575px) {
+  .navmenu ul {
+    inset: 54px 12px auto 12px;
+    max-height: calc(100vh - 76px);
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    font-size: 16px;
+    padding: 12px 16px;
+  }
+
+  .mobile-nav-active .mobile-nav-toggle {
+    top: 12px;
+    right: 12px;
+  }
+}
+
 /*--------------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/
@@ -593,7 +581,7 @@ h6 {
 }
 
 .footer p {
-  font-size: 15;
+  font-size: 15px;
   font-style: italic;
   padding: 0;
   margin: 0 0 30px 0;
@@ -773,6 +761,30 @@ section,
   overflow: clip;
 }
 
+@media (max-width: 991px) {
+  section,
+  .section {
+    padding: 50px 0;
+  }
+
+  .section-title {
+    padding-bottom: 36px;
+  }
+}
+
+@media (max-width: 575px) {
+  section,
+  .section {
+    padding: 42px 0;
+  }
+
+  .section-title h2 {
+    font-size: 28px;
+    margin-bottom: 14px;
+    padding-bottom: 16px;
+  }
+}
+
 @media (max-width: 1199px) {
 
   section,
@@ -820,6 +832,7 @@ section,
 .hero {
   width: 100%;
   min-height: 100vh;
+  min-height: 100svh;
   position: relative;
   padding: 80px 0;
   display: flex;
@@ -863,14 +876,33 @@ section,
 }
 
 @media (max-width: 768px) {
+  .hero {
+    min-height: 680px;
+    padding: 96px 0 64px;
+  }
+
   .hero h2 {
     font-size: 32px;
-    line-height: 36px;
+    line-height: 1.15;
   }
 
   .hero p {
     font-size: 18px;
-    line-height: 24px;
+    line-height: 1.45;
+  }
+}
+
+@media (max-width: 575px) {
+  .hero {
+    min-height: 620px;
+  }
+
+  .hero h2 {
+    font-size: 30px;
+  }
+
+  .hero p {
+    font-size: 17px;
   }
 }
 
@@ -935,6 +967,23 @@ section,
   border-radius: 18px;
   border-bottom: 5px solid var(--surface-color);
   height: 100%;
+}
+
+@media (max-width: 991px) {
+  .services .service-item {
+    padding: 40px 24px;
+  }
+}
+
+@media (max-width: 575px) {
+  .services .service-item {
+    border-radius: 12px;
+    padding: 32px 22px;
+  }
+
+  .services .service-item h3 {
+    font-size: 20px;
+  }
 }
 
 .services .service-item .icon {
@@ -1031,6 +1080,29 @@ section,
   margin: 10px;
   background: var(--accent-color);
   color: var(--contrast-color);
+}
+
+@media (max-width: 991px) {
+  .call-to-action {
+    padding: 80px 0;
+  }
+
+  .call-to-action h3,
+  .call-to-action p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 575px) {
+  .call-to-action {
+    padding: 64px 0;
+  }
+
+  .call-to-action .cta-btn {
+    width: 100%;
+    max-width: 260px;
+    margin: 10px auto 0;
+  }
 }
 
 .call-to-action .cta-btn:hover {
@@ -1372,6 +1444,41 @@ section,
   border-radius: 50px;
 }
 
+@media (max-width: 991px) {
+  .pricing .pricing-item {
+    padding: 34px 20px;
+  }
+
+  .pricing .pricing-item h4 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 575px) {
+  .pricing .pricing-item {
+    padding: 30px 18px;
+  }
+
+  .pricing .pricing-item h3 {
+    margin-top: 10px;
+    padding: 12px 8px;
+  }
+
+  .pricing .pricing-item h4 {
+    font-size: 34px;
+  }
+
+  .pricing .pricing-item ul {
+    padding: 16px 0;
+  }
+
+  .pricing .pricing-item .btn-buy {
+    width: 100%;
+    max-width: 240px;
+    padding: 11px 20px;
+  }
+}
+
 /*--------------------------------------------------------------
 # Faq Section
 --------------------------------------------------------------*/
@@ -1472,6 +1579,45 @@ section,
   color: var(--accent-color);
 }
 
+@media (max-width: 991px) {
+  .faq .content {
+    text-align: center;
+  }
+
+  .faq .content h3 {
+    font-size: 30px;
+  }
+
+  .faq .faq-container {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 575px) {
+  .faq .content h3 {
+    font-size: 26px;
+  }
+
+  .faq .faq-container .faq-item {
+    padding: 18px 16px;
+  }
+
+  .faq .faq-container .faq-item h3 {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 0 26px 0 30px;
+  }
+
+  .faq .faq-container .faq-item .faq-icon {
+    left: 16px;
+    font-size: 20px;
+  }
+
+  .faq .faq-container .faq-item .faq-toggle {
+    right: 16px;
+  }
+}
+
 /*--------------------------------------------------------------
 # Recent Posts Section
 --------------------------------------------------------------*/
@@ -1561,6 +1707,7 @@ section,
   padding: 0;
   margin-bottom: 0;
   font-size: 14px;
+  overflow-wrap: anywhere;
 }
 
 .contact .info-item:hover i {
@@ -1568,45 +1715,22 @@ section,
   color: var(--contrast-color);
 }
 
-.contact .php-email-form {
-  height: 100%;
+@media (max-width: 991px) {
+  .contact .info-item+.info-item {
+    margin-top: 28px;
+  }
 }
 
-.contact .php-email-form input[type=text],
-.contact .php-email-form input[type=email],
-.contact .php-email-form textarea {
-  font-size: 14px;
-  padding: 10px 15px;
-  box-shadow: none;
-  border-radius: 0;
-  color: var(--default-color);
-  background-color: var(--surface-color);
-  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
-}
+@media (max-width: 575px) {
+  .contact .info-item {
+    align-items: flex-start;
+  }
 
-.contact .php-email-form input[type=text]:focus,
-.contact .php-email-form input[type=email]:focus,
-.contact .php-email-form textarea:focus {
-  border-color: var(--accent-color);
-}
-
-.contact .php-email-form input[type=text]::placeholder,
-.contact .php-email-form input[type=email]::placeholder,
-.contact .php-email-form textarea::placeholder {
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
-}
-
-.contact .php-email-form button[type=submit] {
-  color: var(--contrast-color);
-  background: var(--accent-color);
-  border: 0;
-  padding: 10px 30px;
-  transition: 0.4s;
-  border-radius: 50px;
-}
-
-.contact .php-email-form button[type=submit]:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 25%);
+  .contact .info-item i {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -2586,6 +2710,7 @@ section,
 @media (max-width: 768px) {
   .modern-contact-form {
     padding: 30px 20px;
+    border-radius: 12px;
   }
 
   .modern-contact-form .form-header h3 {
@@ -2595,6 +2720,35 @@ section,
   .modern-contact-form .btn-submit {
     padding: 14px 28px;
     font-size: 15px;
+  }
+}
+
+@media (max-width: 575px) {
+  .modern-contact-form {
+    padding: 26px 16px;
+  }
+
+  .modern-contact-form .form-header {
+    margin-bottom: 24px;
+  }
+
+  .modern-contact-form .form-header h3 {
+    font-size: 21px;
+  }
+
+  .form-floating-group .form-input {
+    min-height: 54px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .form-floating-group .form-textarea {
+    min-height: 140px;
+  }
+
+  .modern-contact-form .btn-submit {
+    width: 100%;
+    padding: 14px 20px;
   }
 }
 
